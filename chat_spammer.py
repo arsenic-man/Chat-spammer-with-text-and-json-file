@@ -2,12 +2,16 @@ from os import path
 import json
 from time import sleep
 from pynput.keyboard import Controller as KeyboardController, Key
+import cfonts
+import colorama
 
+colorama.init()
+print(cfonts.render("Chat spammer" , colors=["yellow" , "red"]))
 keyboard = KeyboardController()
 
 
 def finnish():
-    print("finnish !!!")
+    print(colorama.Fore.CYAN+"finnish 🏁")
 
 
 def json_spam(file):
@@ -29,7 +33,7 @@ def json_spam(file):
 
 def use_json(json_file):
 
-    permission = input("You have 10 seconds to click on the text box after press ENTER-button (type 'b' to turn back) "
+    permission = input(colorama.Fore.RED+" ⚠️ You have 10 seconds to click on the text box after press ENTER-button (type 'b' to turn back) "
                        ": ")
 
     if permission == "b":
@@ -58,7 +62,7 @@ def help_json_path(json_file, text):
 
 def get_json_path(text):
     text = text
-    json_file = str(input("Enter json file path: "))
+    json_file = str(input(colorama.Fore.YELLOW+"🚧 Enter json file path: "))
     help_json_path(json_file, text)
 
 
@@ -76,7 +80,7 @@ def text_spam(text, num):
 
 
 def not_json(text_input, num_input):
-    permission = input("You have 10 seconds to click on the text box after press ENTER-button (type 'b' to turn back) "
+    permission = input(colorama.Fore.RED+" ⚠️ You have 10 seconds to click on the text box after press ENTER-button (type 'b' to turn back) "
                        ": ")
     if permission == "b":
         start()
@@ -94,7 +98,7 @@ def if_int(num_input):
 
 def get_number(text_input):
     text_input = text_input
-    num_input = input("Number of message : ")
+    num_input = input(colorama.Fore.GREEN+"Number of message : ")
     if if_int(num_input):
         num_input = int(num_input)
         not_json(text_input, num_input)
@@ -103,12 +107,32 @@ def get_number(text_input):
 
 
 def get_text():
-    text_input = str(input("Enter your text : "))
+    text_input = str(input(colorama.Fore.GREEN+"Enter your text : "))
     get_number(text_input)
 
 
 def start():
-    json_input = str(input("Do you want to use json ? (y/n) : "))
+    print(colorama.Fore.GREEN+'''
+🔒 - Use at your own risk, we are not responsible for your actions.
+☑️ - Made by Arsenic-man and Mazdak Pakaghideh.
+📝 - Notes: follow the instructions and when you are ready press enter and select text box then wait a few seconds,
+
+'''+colorama.Fore.RESET)
+
+    print(colorama.Fore.CYAN+'''
+        =======
+        📝 - Instructions:
+        --------------------------------------------------------
+        |1-) select that you are going to use json or not      |
+        |                                                      |
+        |2-) Type the message you want to send                 |
+        |                                                      |
+        |3-) Enter how many times you want to send the message |          
+        |                                                      |                                                                                           |
+        |4-) Type Enter after when you are ready               |                                    | 
+        -------------------------------------------------------|
+        ''')
+    json_input = str(input(colorama.Fore.GREEN+"Do you want to use json ? (y/n) : "))
 
     if json_input == "n":
         get_text()
